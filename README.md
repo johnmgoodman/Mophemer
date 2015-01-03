@@ -13,8 +13,8 @@ In Morphemer, the term "morpheme" is used loosely -- if not downright incorrectl
 
 These smaller character sequences make up a Morpheme along with their contexts: any 1-to-**n**-length character sequences preceding or following the Morpheme segment are stored as well. Each context segment is stored with its respective context segment (redunancy favored for indexing). For example, from 'unspeakable', Morphemer will make a Morpheme for *speak* with:
 
-* Occurring before *speak*:
-  * *un*, when *speak* occurs before *able*
-
-* Occurring after *speak*:
-  * *able*, when *speak* occurs after *un*
+> * Occurring before *speak*:
+>   * *un*, when *speak* occurs before *able*
+>
+> * Occurring after *speak*:
+>   * *able*, when *speak* occurs after *un*
