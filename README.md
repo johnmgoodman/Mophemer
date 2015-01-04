@@ -18,3 +18,23 @@ These smaller character sequences make up a Morpheme along with their contexts: 
 >
 > * Occurring after *speak*:
 >   * *able*, when *speak* occurs after *un*
+
+Currently, every Morpheme is stored within the generic Morpheme object (the constructor function). When the same segment occurs more than once in a string, the second occurrence updates the existing Morpheme adding the segment context to Morpheme's existing context(s). After "unspeakable", if the words "speaker" and "speak" are parsed, the *speak* Morpheme contexts will then include the following:
+
+> * Occurring before *speak*:
+>   * *un*
+>     * when *speak* occurs before *able*
+>   * *(nothing)*
+>     * when *speak* occurs before *(nothing)*
+>     * when *speak* occurs before *able*
+>
+> * Occurring after *speak*:
+>   * *able*
+>     * when *speak* occurs after *un*
+>   * *er*
+>     * when *speak* occurs after *(nothing)*
+>   * (nothing)
+>     * when *speak* occurs after *(nothing)*
+
+This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *able* also contains *abl*, *ab*, and *a* and *un* contains *n*. These context segments are also recognized by Morphemer as Morphemes, however.
+
