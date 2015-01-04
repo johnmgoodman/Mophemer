@@ -1,5 +1,4 @@
 # Morphemer
-
 A simple tool used to construct words from smaller segments of other words. I created it to use as a fantasy name generator but it is not limited to that.
 
 ## Morphemes
@@ -9,6 +8,8 @@ Each morpheme has contexts in which it may or may not occur. The *un* morpheme c
 
 
 ## The Morphemer way
+
+### Parsing
 In Morphemer, the term "morpheme" is used loosely -- if not downright incorrectly. Morphemer has no notion of meaning when it parses words. It breaks up strings into 1-to-**n**-length segments, where **n** is arbitrary. This means that given the word "unspeakable" and **n** is at least 3, Morphemer will register *uns*, *un*, *ns*, *u*, *n*, and *s* as Morphemes (among others).
 
 These smaller character sequences make up a Morpheme along with their contexts: any 1-to-**n**-length character sequences preceding or following the Morpheme segment are stored as well. Each context segment is stored with its respective context segment (redundancy favored for indexing). For example, from 'unspeakable', Morphemer will make a Morpheme for *speak* with:
@@ -19,7 +20,7 @@ These smaller character sequences make up a Morpheme along with their contexts: 
 > * Occurring after *speak*:
 >   * *able*, when *speak* occurs after *un*
 
-Currently, every Morpheme is stored within the generic Morpheme object (the constructor function). When the same segment occurs more than once in a string, the second occurrence updates the existing Morpheme adding the segment context to Morpheme's existing context(s). After "unspeakable", if the words "speaker" and "speak" are parsed, the *speak* Morpheme contexts will then include the following:
+Currently, every Morpheme is stored within the generic Morpheme object (the constructor function). When the same segment occurs more than once in a string, the second occurrence updates the existing Morpheme by adding the segment context to the Morpheme's existing context(s). After "unspeakable", if Morphemer parses "speaker" and "speak", the *speak* Morpheme contexts will then include the following:
 
 > * Occurring before *speak*:
 >   * *un*
@@ -36,5 +37,9 @@ Currently, every Morpheme is stored within the generic Morpheme object (the cons
 >   * (nothing)
 >     * when *speak* occurs after *(nothing)*
 
-This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *able* also contains *abl*, *ab*, and *a* and *un* contains *n*. These context segments are also recognized by Morphemer as Morphemes, however.
+This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *un* contains *n* and *able* contains *abl*, *ab*, and *a*. Each of these can pair with their complementary context(s) (*un* with *able*, *abl*, *ab* and *a*), resulting in a Morpheme with a quickly-growing collection of contexts. Also, every context segment is a Morpheme with its own contextual rules.
 
+
+### Generating a random word
+
+Morphemer's `generateUtterance()` can create words by joining morphemes that are selected randomly but that adhere to contextual rules. It selects randomly from all of the existing word-initial Morphemes then selects one from the context of the first Morpheme. 
