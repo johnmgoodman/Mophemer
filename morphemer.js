@@ -1,6 +1,6 @@
-require('./Morpheme');
+require('./morphemer/Morpheme');
 
 module.exports = {
-  parseMorphemes: require('./parseMorphemes'),
-  generateUtterance: require('./generateUtterance')
+  parseMorphemes: require('./morphemer/parseMorphemes'),
+  generateUtterance: require('./morphemer/generateUtterance')
 };
