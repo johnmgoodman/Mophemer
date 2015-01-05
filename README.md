@@ -12,7 +12,7 @@ Each morpheme has contexts in which it may or may not occur. The *un* morpheme c
 ### Parsing
 In Morphemer, the term "morpheme" is used loosely. Morphemer has no notion of meaning when it parses words. It breaks up strings into 1-to-**n**-length segments, where **n** is arbitrary. This means that given the word "unspeakable" and **n** is at least 3, Morphemer will register *uns*, *un*, *ns*, *u*, *n*, and *s* as Morphemes (among others).
 
-These smaller character sequences make up a Morpheme along with their contexts: any 1-to-**n**-length character sequences preceding or following the Morpheme segment are stored as well. Each context segment is stored with its respective context segment (redundancy favored for indexing). For example, from 'unspeakable', Morphemer will make a Morpheme for *speak* with:
+These smaller character sequences each make up a Morpheme along with their contexts: any 1-to-**n**-length character sequences preceding or following the Morpheme segment are stored as well. Each context segment is stored with its respective context segment (redundancy favored for indexing). For example, from 'unspeakable', Morphemer will make a Morpheme for *speak* with:
 
 > * Occurring before *speak*:
 >   * *un*, when *speak* occurs before *able*
