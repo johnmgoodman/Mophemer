@@ -9,7 +9,6 @@ Each morpheme has contexts in which it may or may not occur. The *un* morpheme c
 
 ## The Morphemer way
 
-### Parsing
 In Morphemer, the term "morpheme" is used loosely. Morphemer has no notion of meaning when it parses words. It breaks up strings into 1-to-**n**-length segments, where **n** is arbitrary. This means that given the word "unspeakable" and **n** is at least 3, Morphemer will register *uns*, *un*, *ns*, *u*, *n*, and *s* as Morphemes (among others).
 
 These smaller character sequences each make up a Morpheme along with their contexts: any 1-to-**n**-length character sequences preceding or following the Morpheme segment are stored as well. Each context segment is stored with its respective context segment (redundancy favored for indexing). For example, from 'unspeakable', Morphemer will make a Morpheme for *speak* with:
@@ -38,6 +37,9 @@ Currently, every Morpheme is stored within the generic Morpheme object (the cons
 >     * when *speak* occurs after *(nothing)*
 
 This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *un* contains *n* and *able* contains *abl*, *ab*, and *a*. Each of these can pair with their complementary context(s) (*un* with *able*, *abl*, *ab* and *a*), resulting in a Morpheme with a quickly-growing collection of contexts. Also, every context segment is a Morpheme with its own contextual rules.
+
+### Parsing a word
+You can add morphemes to Morphemer by using its `parseMorphemes(*word*, *n*)` function. This will find all of the possible morphemes in the word up to **n** characters.
 
 
 ### Generating a random word
