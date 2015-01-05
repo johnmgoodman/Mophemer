@@ -39,7 +39,7 @@ Currently, every Morpheme is stored within the generic Morpheme object (the cons
 This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *un* contains *n* and *able* contains *abl*, *ab*, and *a*. Each of these can pair with their complementary context(s) (*un* with *able*, *abl*, *ab* and *a*), resulting in a Morpheme with a quickly-growing collection of contexts. Also, every context segment is a Morpheme with its own contextual rules.
 
 ### Parsing a word
-You can add morphemes to Morphemer by using its `parseMorphemes(*word*, *n*)` function. This will find all of the possible morphemes in the word up to **n** characters.
+You can add morphemes to Morphemer by using its `parseMorphemes(word, n)` function. This will find all of the possible morphemes in the word up to **n** characters.
 
 
 ### Generating a random word
