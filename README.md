@@ -38,10 +38,29 @@ Currently, every Morpheme is stored within the generic Morpheme object (the cons
 
 This example does not include all of the contexts that Morphemer creates for *speak* in "unspeakable", "speaker", and "speak"; *un* contains *n* and *able* contains *abl*, *ab*, and *a*. Each of these can pair with their complementary context(s) (*un* with *able*, *abl*, *ab* and *a*), resulting in a Morpheme with a quickly-growing collection of contexts. Also, every context segment is a Morpheme with its own contextual rules.
 
+## Using Morphemer
+
+### Installation
+Move the `Morphemer` directory and the `morphemer.js` file to a directory in your project, and import it into your project with `require`.
+```
+var morphemer = require('./path/to/morphemer');
+```
+
 ### Parsing a word
 You can add morphemes to Morphemer by using its `parseMorphemes(word, n)` function. This will find all of the possible morphemes in the word up to **n** characters.
+```
+var morphemer = require('./path/to/morphemer');
+
+morphemer.parseMorphemes('unspeakable',3);
+```
 
 
 ### Generating a random word
 
-Morphemer's `generateUtterance()` can create words by joining morphemes that are selected randomly but that adhere to contextual rules. It selects randomly from all of the existing word-initial Morphemes then selects one from the context of the first Morpheme. 
+Morphemer's `generateUtterance()` can create words by joining morphemes that are selected randomly but that adhere to contextual rules. It selects randomly from all of the existing word-initial Morphemes then selects one from the context of the first Morpheme.
+```
+var morphemer = require('./path/to/morphemer');
+
+morphemer.parseMorphemes('unspeakable',3);
+console.log( morphemer.generateUtterance() ); // "kable"
+```
